@@ -1,7 +1,5 @@
 package project.game.sudoku.model;
 
-import java.nio.charset.IllegalCharsetNameException;
-
 public class Space {
     private Integer actual;
     private final int expected;
