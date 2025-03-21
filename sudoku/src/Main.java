@@ -125,6 +125,7 @@ public class Main {
 
     private static int runUntilGetValidValue(final int min, final int max){
         int current;
+
         while (true) {
             try {
                 System.out.printf("Insira um valor entre %d e %d: ", min, max);
