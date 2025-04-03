@@ -7,7 +7,7 @@ import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static project.game.sudoku.model.GameStatusEnum.*;
 
-public class Board {
+public class Board{
 
     private final List<List<Space>> spaces;
 
@@ -37,7 +37,7 @@ public class Board {
 
         return spaces.stream().
                 flatMap(Collection::stream).
-                anyMatch(s -> nonNull(s.getActual()) && s.getActual().equals(s.getExpected()));
+                anyMatch(s -> nonNull(s.getActual()) && !s.getActual().equals(s.getExpected()));
     }
 
     public boolean changeValue(final int col, final int row, final Integer value) {
