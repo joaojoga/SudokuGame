@@ -1,5 +1,6 @@
 import project.game.sudoku.model.Board;
 import project.game.sudoku.model.Space;
+import project.game.sudoku.util.BoardTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.stream.Stream;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static java.util.stream.Collectors.toMap;
+import static project.game.sudoku.util.BoardTemplate.BOARD_TEMPLATE;
 
 public class Main {
     private final static Scanner tec = new Scanner(System.in);
@@ -87,7 +89,7 @@ public class Main {
         var value = runUntilGetValidValue(1, 9);
 
         if(!board.changeValue(col, row, value)){
-            System.out.printf("Erro ao atualizar o valor, pois a posição [%s,%s] tem valor fixo", col, row);
+            System.out.printf("Erro ao atualizar o valor, pois a posição [%s,%s] tem valor fixo ", col, row);
         }
     }
 
@@ -97,30 +99,82 @@ public class Main {
             return;
         }
 
-        System.out.println("Informe a coluna que deseja que o numero seja inserido");
+        System.out.println("Informe a coluna que deseja que o numero seja removido");
         var col = runUntilGetValidValue(0, 8);
 
-        System.out.println("Agora informe a linha que deseja que o numero seja inserido");
+        System.out.println("Agora informe a linha que deseja que o numero seja removido");
         var row = runUntilGetValidValue(0, 8);
 
-        System.out.printf("Informe o numero que vai ser adicionado na posição [%s,%s]\n", col, row);
-        var value = runUntilGetValidValue(1, 9);
-
         if(!board.clearValue(col, row)){
-            System.out.printf("Erro ao remover o valor, pois a posição [%s,%s] tem valor fixo", col, row);
+            System.out.printf("Erro ao remover o valor, pois a posição [%s,%s] tem valor fixo\n", col, row);
         }
     }
 
     private static void showCurrentGame() {
+        if(isNull(board)){
+            System.out.println("O jogo ainda não foi iniciado");
+            return;
+        }
+
+        var args = new Object[81];
+        var argsPos = 0;
+        for (int i = 0; i < BOARD_LIMIT; i++) {
+            for (var col: board.getSpaces()) {
+                args[argsPos ++] = " " + ((isNull(col.get(i).getActual())) ? " " : col.get(i).getActual());
+            }
+        }
+        System.out.print("Seu jogo atual");
+        System.out.printf((BOARD_TEMPLATE) + "%n", args);
     }
 
     private static void showGameStatus() {
+        if(isNull(board)){
+            System.out.println("O jogo ainda não foi iniciado");
+            return;
+        }
+
+        System.out.printf("Status do seu jogo atual %s\n", board.getGameStatus().getLabel());
+        if(board.hasErrors()){
+            System.out.println("O jogo apresenta erros");
+        }else{
+            System.out.println("O jogo não apresenta erros");
+        }
     }
 
     private static void clearGame() {
+        if(isNull(board)){
+            System.out.println("O jogo ainda não foi iniciado");
+            return;
+        }
+
+        System.out.println("Tem certeza que quer limpar seu jogo? Isso ira fazer você perder todo seu progresso");
+        var confirm = tec.next();
+
+        while(!confirm.equalsIgnoreCase("sim") && !confirm.equalsIgnoreCase("nao")){
+            System.out.println("Informe sim ou não");
+            confirm = tec.next();
+        }
+
+        if(confirm.equalsIgnoreCase("sim")){
+            board.reset();
+        }
     }
 
     private static void finishGame() {
+        if(isNull(board)){
+            System.out.println("O jogo ainda não foi iniciado");
+            return;
+        }
+
+        if(board.gameOver()){
+            System.out.print("Parabén você concluiu o jogo");
+            showCurrentGame();
+            board = null;
+        }else if(board.hasErrors()){
+            System.out.println("O jogo apresenta erros, volte para o board e faça os ajustes necessarios");
+        }else{
+            System.out.println("Você ainda não preencheu todos os espaços necessarios");
+        }
     }
 
     private static int runUntilGetValidValue(final int min, final int max){
