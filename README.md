@@ -15,7 +15,6 @@ Este é um jogo de **Sudoku** desenvolvido em **Java** utilizando **Swing** para
 ## 🛠️ Tecnologias Utilizadas
 - **Java** (JDK 17+)
 - **Swing** (Interface gráfica)
-- **Maven** (Gerenciamento de dependências)
 
 ## 🚀 Como Executar
 1. **Clone o repositório**:
@@ -25,5 +24,4 @@ Este é um jogo de **Sudoku** desenvolvido em **Java** utilizando **Swing** para
 
 2. **Compile e execute**:
    ```sh
-   mvn clean package
    java -jar target/sudoku-game.jar
