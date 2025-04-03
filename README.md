@@ -1,7 +1,7 @@
 # Sudoku Game
 
 ## 🧩 Sobre o Projeto
-Este é um jogo de **Sudoku** desenvolvido em **Java** utilizando **Swing** para a interface gráfica. O jogo permite que o usuário jogue uma partida de Sudoku com números fixos e editáveis, validando automaticamente se a solução está correta.
+Este é um jogo de Sudoku desenvolvido em Java utilizando Swing para a interface gráfica. O jogo permite que o usuário jogue uma partida de Sudoku com números fixos e editáveis, validando automaticamente se a solução está correta. Além da interface gráfica, também é possível jogar diretamente pelo terminal, inserindo os números e verificando a solução de forma interativa.
 
 ## 🛠️ Tecnologias Utilizadas
 - **Java** (JDK 17+)
