@@ -16,12 +16,16 @@ Este é um jogo de **Sudoku** desenvolvido em **Java** utilizando **Swing** para
 - **Java** (JDK 17+)
 - **Swing** (Interface gráfica)
 
-## 🚀 Como Executar
-1. **Clone o repositório**:
-   ```sh
-   git clone https://github.com/joaojoga/SudokuGame.git
-   cd sudoku-game
+## 🎮 Como Jogar
 
-2. **Compile e execute**:
-   ```sh
-   java -jar target/sudoku-game.jar
+1️⃣ **Inicie o jogo** e escolha a dificuldade desejada.  
+2️⃣ O tabuleiro será preenchido parcialmente com alguns números fixos.  
+3️⃣ Clique em um espaço vazio para inserir um número de 1 a 9.  
+4️⃣ O objetivo é preencher todas as células sem repetir números em uma mesma linha, coluna ou bloco de 3x3.  
+5️⃣ Use os botões disponíveis:  
+   - **Verificar**: Confere se há erros no tabuleiro.  
+   - **Reiniciar**: Limpa o jogo e permite começar novamente.  
+   - **Finalizar**: Confirma se a solução está correta.  
+6️⃣ Se todos os números estiverem corretos, você vence o jogo! 🎉  
+
+Divirta-se resolvendo o Sudoku! 🧩😃
