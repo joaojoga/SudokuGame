@@ -1,5 +1,6 @@
 package project.game.sudoku.ui.custom.screen;
 
+import project.game.sudoku.model.DifficultyLevel;
 import project.game.sudoku.model.Space;
 import project.game.sudoku.service.BoardService;
 import project.game.sudoku.service.NotifierService;
@@ -30,7 +31,8 @@ public class MainScreen {
     private JButton finishGameButton;
 
     public MainScreen(final Map<String, String> gameConfig) {
-        this.boardService = new BoardService(gameConfig);
+        DifficultyLevel level = askDifficultyLevel();
+        this.boardService = new BoardService(gameConfig, level);
         this.notifierService = new NotifierService();
     }
 
@@ -52,6 +54,26 @@ public class MainScreen {
 
         mainFrame.revalidate();
         mainFrame.repaint();
+    }
+
+    private DifficultyLevel askDifficultyLevel() {
+        String[] options = {"Fácil", "Médio", "Difícil"};
+        int choice = JOptionPane.showOptionDialog(
+                null,
+                "Escolha o nível de dificuldade",
+                "Nível do Sudoku",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                options[0]
+        );
+
+        return switch (choice) {
+            case 1 -> DifficultyLevel.MEDIUM;
+            case 2 -> DifficultyLevel.HARD;
+            default -> DifficultyLevel.EASY;
+        };
     }
 
     private List<Space> getSpacesFromSector(final List<List<Space>> spaces,
