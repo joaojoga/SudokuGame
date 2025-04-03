@@ -48,9 +48,9 @@ public class BoardService {
                 var expected = Integer.parseInt(positionConfig.split(",")[0]);
                 var fixed = Boolean.parseBoolean(positionConfig.split(",")[1]);
 
-                if (level == DifficultyLevel.MEDIUM && Math.random() < 0.4) {
+                if (level == DifficultyLevel.MEDIUM && Math.random() < 0.3) {
                     fixed = false;
-                } else if (level == DifficultyLevel.HARD && Math.random() < 0.6) {
+                } else if (level == DifficultyLevel.HARD && Math.random() < 0.5) {
                     fixed = false;
                 }
 
