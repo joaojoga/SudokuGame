@@ -15,7 +15,8 @@ Este é um jogo de **Sudoku** desenvolvido em **Java** utilizando **Swing** para
 5️⃣ Use os botões disponíveis:  
    - **Verificar**: Confere se há erros no tabuleiro.  
    - **Reiniciar**: Limpa o jogo e permite começar novamente.  
-   - **Finalizar**: Confirma se a solução está correta.  
+   - **Finalizar**: Confirma se a solução está correta.
+     
 6️⃣ Se todos os números estiverem corretos, você vence o jogo! 🎉  
 
 Divirta-se resolvendo o Sudoku! 🧩😃
